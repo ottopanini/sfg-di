@@ -1,0 +1,12 @@
+application:
+  guru:
+    username: Johnson
+    password: someotherpass
+    dburl: /somewhereelse
+---
+spring:
+  profiles: ES
+
+application:
+  guru:
+    password: Johnson password $$$ in Spanish
