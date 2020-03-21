@@ -3,6 +3,7 @@ package guru.springframework.sfgdi;
 import guru.springframework.sfgdi.controllers.*;
 import guru.springframework.sfgdi.examplebeans.FakeDataSource;
 import guru.springframework.sfgdi.examplebeans.FakeJmsBroker;
+import guru.springframework.sfgdi.examplebeans.MyApplicationProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -39,16 +40,19 @@ public class SfgDiApplication {
 
 		System.out.println("----------- Properties");
 		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
-
 		System.out.println(fakeDataSource.getUser());
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getUrl());
 
 		FakeJmsBroker fakeJmsBroker = ctx.getBean(FakeJmsBroker.class);
-
 		System.out.println(fakeJmsBroker.getUsername());
 		System.out.println(fakeJmsBroker.getPassword());
 		System.out.println(fakeJmsBroker.getUrl());
+
+		MyApplicationProperties applicationProperties = ctx.getBean(MyApplicationProperties.class);
+		System.out.println(applicationProperties.getUser());
+		System.out.println(applicationProperties.getPassword());
+		System.out.println(applicationProperties.getUrl());
 	}
 
 }

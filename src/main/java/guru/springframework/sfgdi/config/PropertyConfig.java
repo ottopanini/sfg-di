@@ -2,6 +2,7 @@ package guru.springframework.sfgdi.config;
 
 import guru.springframework.sfgdi.examplebeans.FakeDataSource;
 import guru.springframework.sfgdi.examplebeans.FakeJmsBroker;
+import guru.springframework.sfgdi.examplebeans.MyApplicationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -40,6 +41,14 @@ public class PropertyConfig {
     @Value("${guru.jms.url}")
     String jmsurl;
 
+    @Value("${application.guru.username}")
+    String applicationUser;
+
+    @Value("${application.guru.password}")
+    String applicationPassword;
+
+    @Value("${application.guru.dburl}")
+    String applicationUrl;
 
     @Bean
     public FakeDataSource fakeDataSource() {
@@ -59,6 +68,16 @@ public class PropertyConfig {
         fakeJmsBroker.setUrl(jmsurl);
 
         return fakeJmsBroker;
+    }
+
+    @Bean
+    public MyApplicationProperties myApplicationProperties() {
+        MyApplicationProperties props = new MyApplicationProperties();
+        props.setUser(applicationUser);
+        props.setPassword(applicationPassword);
+        props.setUrl(applicationUrl);
+
+        return props;
     }
 
     @Bean
